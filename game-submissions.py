@@ -1,7 +1,7 @@
 import importlib
 import traceback
 from games import alphabeta_search
-from grading.util import roster, print_table
+from utils import roster, print_table
 from io import StringIO
 import sys
 
