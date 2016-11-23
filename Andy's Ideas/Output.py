@@ -1,4 +1,9 @@
+#Resources:
+
 #http://sebsauvage.net/python/gui/#import
+#http://effbot.org/tkinterbook/canvas.htm
+#https://www.tutorialspoint.com/python/tk_pack.htm
+
 #The purpose of this script is to act as the GUI for a suduko game
 
 import tkinter
@@ -34,20 +39,23 @@ class simpleapp_tk(tkinter.Tk):
         blackbutton = tkinter.Button(Bframe, text="Solve")
         blackbutton.pack()
 
-    #     #create a frame to hold the canvas and a frame to hold the grid
+    #     #create a frame to hold the canvas
         CFrame = tkinter.Frame(self)
         CFrame.pack(side = "left")
     #     GFrame = tkinter.Frame(self)
     #
     #
-         #create a grid
-        grid = tkinter.Canvas(CFrame,bg = "green", bd = 200, cursor = "arrow", relief = "ridge")
+         #create the canvas
+        grid = tkinter.Canvas(CFrame,bg = "green", bd = 4, cursor = "arrow", relief = "ridge", height = 600, width = 600)
         grid.pack()
 
+        #draw a grid on the canvas
+        grid.create_line(x0, y0, x1, y1, ..., xn, yn, options)
 
-    #     grid.grid(column = 0, row = 0)
+
     #
-    #     self.grid(GFrame)
+    #
+    #    self.grid(CFrame)
     #
     #     self.entry = tkinter.Entry(self)
     #     self.entry.grid(column = 0, row = 0, sticky = 'EW')
