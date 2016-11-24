@@ -49,7 +49,7 @@ class simpleapp_tk(tkinter.Tk):
         grid = tkinter.Canvas(CFrame,bg = "black", bd = 8, cursor = "arrow", relief = "raised", height = 630, width = 630)
         grid.pack()
 
-        #draw a grid on the canvas
+        #draw horizontal lines on the canvas
         linewidth = 5
         grid.create_rectangle(10, 10, 641, 641, fill = "white")
         grid.create_line(10,80,641,80)
@@ -60,6 +60,17 @@ class simpleapp_tk(tkinter.Tk):
         grid.create_line(10, 430, 641, 430, width = linewidth)
         grid.create_line(10, 500, 641, 500)
         grid.create_line(10, 570, 641, 570)
+
+        #draw vertical lines on the canvas
+        grid.create_line(80, 10, 80, 641)
+        grid.create_line(150, 10, 150, 641)
+        grid.create_line(220, 10, 220, 641, width = linewidth)
+        grid.create_line(290, 10, 290, 641)
+        grid.create_line(360, 10, 360, 641)
+        grid.create_line(430, 10, 430, 641, width = linewidth)
+        grid.create_line(500, 10, 500, 641)
+        grid.create_line(570, 10, 570, 641)
+
 
 
 
