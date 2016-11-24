@@ -27,17 +27,17 @@ class simpleapp_tk(tkinter.Tk):
         # bottomframe.pack()
 
 
-        redbutton = tkinter.Button(Bframe, text="New Game")
-        redbutton.pack()
+        newButton = tkinter.Button(Bframe, text="New Game")
+        newButton.pack()
 
-        greenbutton = tkinter.Button(Bframe, text="Rules")
-        greenbutton.pack()
+        rButton = tkinter.Button(Bframe, text="Rules")
+        rButton.pack()
 
-        bluebutton = tkinter.Button(Bframe, text="Hint !")
-        bluebutton.pack()
+        hButton = tkinter.Button(Bframe, text="Hint !")
+        hButton.pack()
 
-        blackbutton = tkinter.Button(Bframe, text="Solve")
-        blackbutton.pack()
+        sButton = tkinter.Button(Bframe, text="Solve")
+        sButton.pack()
 
     #     #create a frame to hold the canvas
         CFrame = tkinter.Frame(self)
@@ -46,11 +46,21 @@ class simpleapp_tk(tkinter.Tk):
     #
     #
          #create the canvas
-        grid = tkinter.Canvas(CFrame,bg = "green", bd = 4, cursor = "arrow", relief = "ridge", height = 600, width = 600)
+        grid = tkinter.Canvas(CFrame,bg = "black", bd = 8, cursor = "arrow", relief = "raised", height = 630, width = 630)
         grid.pack()
 
         #draw a grid on the canvas
-        grid.create_line(x0, y0, x1, y1, ..., xn, yn, options)
+        linewidth = 5
+        grid.create_rectangle(10, 10, 641, 641, fill = "white")
+        grid.create_line(10,80,641,80)
+        grid.create_line(10, 150, 641, 150)
+        grid.create_line(10, 220, 641, 220, width = linewidth)
+        grid.create_line(10, 290, 641, 290)
+        grid.create_line(10, 360, 641, 360)
+        grid.create_line(10, 430, 641, 430, width = linewidth)
+        grid.create_line(10, 500, 641, 500)
+        grid.create_line(10, 570, 641, 570)
+
 
 
     #
