@@ -8,12 +8,7 @@
 
 import tkinter
 
-
-
-
-
-
-class simpleapp_tk(tkinter.Tk):
+class sudokuGUI(tkinter.Tk):
     def __init__ (self, parent):
         tkinter.Tk.__init__(self,parent)
         self.parent = parent
@@ -27,16 +22,16 @@ class simpleapp_tk(tkinter.Tk):
         # bottomframe.pack()
 
 
-        newButton = tkinter.Button(Bframe, text="New Game")
+        newButton = tkinter.Button(Bframe, text="New Game", command = self.buttonClick("new"))
         newButton.pack()
 
-        rButton = tkinter.Button(Bframe, text="Rules")
+        rButton = tkinter.Button(Bframe, text="Rules", command = self.buttonClick("rules"))
         rButton.pack()
 
-        hButton = tkinter.Button(Bframe, text="Hint !")
+        hButton = tkinter.Button(Bframe, text="Hint !", command = self.buttonClick("hint"))
         hButton.pack()
 
-        sButton = tkinter.Button(Bframe, text="Solve")
+        sButton = tkinter.Button(Bframe, text="Solve", command = self.buttonClick("solve"))
         sButton.pack()
 
     #     #create a frame to hold the canvas
@@ -70,6 +65,20 @@ class simpleapp_tk(tkinter.Tk):
         grid.create_line(430, 10, 430, 641, width = linewidth)
         grid.create_line(500, 10, 500, 641)
         grid.create_line(570, 10, 570, 641)
+
+    def buttonClick(self, button):
+        if button is "new":
+            pass
+        elif button is "rules":
+            pass
+        elif button is "hint":
+            pass
+        elif button is "solve":
+            pass
+
+
+
+
 
 
 
@@ -136,6 +145,6 @@ class simpleapp_tk(tkinter.Tk):
     #     label.grid(column = 0, row = 10, columnspan = 10, sticky = 'EW')
 
 if __name__ == "__main__":
-    app = simpleapp_tk(None)
-    app.title('sudoku solver 1.0')
+    app = sudokuGUI(None)
+    app.title('sudoku player 1.0')
     app.mainloop()
