@@ -69,12 +69,16 @@ class sudokuGUI(tkinter.Tk):
     def buttonClick(self, button):
         if button is "new":
             pass
+            #game.newGame
         elif button is "rules":
             pass
+            #game.rules
         elif button is "hint":
             pass
+            #game.hint
         elif button is "solve":
             pass
+            #game.solve
 
 
 
