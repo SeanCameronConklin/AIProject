@@ -9,11 +9,14 @@
 #The purpose of this script is to act as the GUI for a suduko game
 
 import tkinter
+#import sudoku.py
 
 
 
 
 class sudokuGUI(tkinter.Tk):
+    boxDictionary = []
+    openBoxes = []
     def __init__ (self, parent):
         tkinter.Tk.__init__(self,parent)
         self.parent = parent
@@ -335,6 +338,24 @@ class sudokuGUI(tkinter.Tk):
         grid.create_window(510, 590, anchor="nw", window=e8_9)
         grid.create_window(580, 590, anchor="nw", window=e9_9)
 
+        boxDictionary = [((1,1), e1_1), ((2,1), e2_1), ((3,1), e3_1), ((4,1), e4_1), ((5,1), e5_1), ((6,1), e6_1), ((7,1), e7_1), ((8,1), e8_1), ((9,1), e9_1),
+                         ((1, 2), e1_2), ((2,2), e2_2), ((3,2), e3_2), ((4,2), e4_2), ((5,2), e5_2), ((6,2), e6_2), ((7,2), e7_2), ((8,2), e8_2), ((9,2), e9_2),
+                         ((1, 3), e1_3), ((2,3), e2_3), ((3,3), e3_3), ((4,3), e4_3), ((5,3), e5_3), ((6,3), e6_3), ((7,3), e7_3), ((8,3), e8_3), ((9,3), e9_3),
+                         ((1, 4), e1_4), ((2,4), e2_4), ((3,4), e3_4), ((4,4), e4_4), ((5,4), e5_4), ((6,4), e6_4), ((7,4), e7_4), ((8,4), e8_4), ((9,4), e9_4),
+                         ((1, 5), e1_5), ((2,5), e2_5), ((3,5), e3_5), ((4,5), e4_5), ((5,5), e5_5), ((6,5), e6_5), ((7,5), e7_5), ((8,5), e8_5), ((9,5), e9_5),
+                         ((1, 6), e1_6), ((2,6), e2_6), ((3,6), e3_6), ((4,6), e4_6), ((5,6), e5_6), ((6,6), e6_6), ((7,6), e7_6), ((8,6), e8_6), ((9,6), e9_6),
+                         ((1, 7), e1_7), ((2,7), e2_7), ((3,7), e3_7), ((4,7), e4_7), ((5,7), e5_7), ((6,7), e6_7), ((7,7), e7_7), ((8,7), e8_7), ((9,7), e9_7),
+                         ((1, 8), e1_8), ((2,8), e2_8), ((3,8), e3_8), ((4,8), e4_8), ((5,8), e5_8), ((6,8), e6_8), ((7,8), e7_8), ((8,8), e8_8), ((9,8), e9_8),
+                         ((1, 9), e1_9), ((2,9), e2_9), ((3,9), e3_9), ((4,9), e4_9), ((5,9), e5_9), ((6,9), e6_9), ((7,9), e7_9), ((8,9), e8_9), ((9,9), e9_9),]
+
+        fill
+
+
+
+
+
+
+
 
 
     def buttonClick(self, button):
@@ -354,76 +375,24 @@ class sudokuGUI(tkinter.Tk):
             #self.fill(game.solve)
 
 
+    def print(self, message):
+        pass
+
+    def fill (self, tofill, available):
+        pass
 
 
 
 
 
 
-    #
-    #
-    #    self.grid(CFrame)
-    #
-    #     self.entry = tkinter.Entry(self)
-    #     self.entry.grid(column = 0, row = 0, sticky = 'EW')
-    #
-    #     #create user buttons
-    #     #this button will bring up a window with rules for the game
-    #     hB = tkinter.Button(self, text = u"Rules")
-    #     hB.grid(column = 9, row = 4)
-    #
-    #     #this button will start a new game ie. initialize the game board
-    #     newButton = tkinter.Button(self, text=u"New Game")
-    #     newButton.grid(column=9, row=5)
-    #
-    #     #this button will give the player the next best available move
-    #     hintButton = tkinter.Button(self, text = u"Hint!")
-    #     hintButton.grid(column = 9, row = 6)
-    #
-    #     #this button will solve the puzzle and fill in all the empty boxes
-    #     solveButton = tkinter.Button(self, text = u"Solve")
-    #     solveButton.grid(column = 9, row = 7)
-    #
-    #
-    #
-    #
-    #
-    #     # These lines allow the columns to be resized along with window
-    #     self.grid_columnconfigure(0,weight = 1)
-    #     self.grid_columnconfigure(1, weight=1)
-    #     self.grid_columnconfigure(2, weight=1)
-    #     self.grid_columnconfigure(3, weight=1)
-    #     self.grid_columnconfigure(4, weight=1)
-    #     self.grid_columnconfigure(5, weight=1)
-    #     self.grid_columnconfigure(6, weight=1)
-    #     self.grid_columnconfigure(7, weight=1)
-    #     self.grid_columnconfigure(8, weight=1)
-    #     self.grid_columnconfigure(9, weight=1)
-    #     self.grid_columnconfigure(10, weight=1)
-    #
-    #     #These lines allow the rows to be resized along with the window
-    #     self.grid_rowconfigure(0,weight = 1)
-    #     self.grid_rowconfigure(1, weight=1)
-    #     self.grid_rowconfigure(2, weight=1)
-    #     self.grid_rowconfigure(3, weight=1)
-    #     self.grid_rowconfigure(4, weight=1)
-    #     self.grid_rowconfigure(5, weight=1)
-    #     self.grid_rowconfigure(6, weight=1)
-    #     self.grid_rowconfigure(7, weight=1)
-    #     self.grid_rowconfigure(8, weight=1)
-    #     self.grid_rowconfigure(9, weight=1)
-    #     self.grid_rowconfigure(10, weight=1)
-    #
-    #     label = tkinter.Label(self, anchor="w", fg="white", bg="red")
-    #     label.grid(column=0, row=10, columnspan=10, sticky='EW')
-    #
-    # def outputLine(self, message):
-    #     label = tkinter.Label(self, anchor = "w", fg = "black", bg = "white")
-    #     label.grid(column = 0, row = 10, columnspan = 10, sticky = 'EW')
+
+
 
 if __name__ == "__main__":
     app = sudokuGUI(None)
     app.title('sudoku player 1.0')
+    #game = sudoku
 
 
 
