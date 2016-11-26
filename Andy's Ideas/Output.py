@@ -76,7 +76,7 @@ class sudokuGUI(tkinter.Tk):
         grid.create_line(570, 10, 570, 641)
 
         self.createInputBoxes(grid)
-        # self.fill(game.boardstate)
+        #self.fill(game.boardstate)
 
     def createInputBoxes(self, window):
         #create user input boxes on each grid box
@@ -377,12 +377,13 @@ class sudokuGUI(tkinter.Tk):
 
 
     def print(self, message):
-        pass
+        label = tkinter.Label(self, justify = "center", relief = "raised", text = message)
+        label.pack(side = "bottom")
 
     def fill (self, State):
         #@variable State should be a dictionary with keys representing board coordinates and values representing what number should
-        #be in that coordinate ie[((1,1), 4), ((3,3), 2), etc]
-        pass
+        #be in that coordinate ie{A1:4, B3:2, etc}
+
         Dict1 = State
         Dict2 = boxDictionary
 
@@ -391,13 +392,18 @@ class sudokuGUI(tkinter.Tk):
         while I < stateKeys.length():
             x = Dict1(stateKeys(I))
             y = Dict2(stateKeys(I))
-            y.insert(x)
-            y.configure(state = "readonly")
+            if y.state != "readonly":
+                y.insert(x)
+                y.configure(state = "readonly")
+                I = I + 1
+            else:
+                I = I + 1
 
 
 
 
-
+    def readIn(self):
+        pass
 
 
 
@@ -411,6 +417,7 @@ if __name__ == "__main__":
     app = sudokuGUI(None)
     app.title('sudoku player 1.0')
     #game = sudoku
+    #game.update(self.readIn())
 
 
 
