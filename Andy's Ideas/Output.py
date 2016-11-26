@@ -11,7 +11,7 @@
 import tkinter
 #import sudoku.py
 
-boxDictionary = {}
+boxDictionary = dict()
 gridFrame = None
 messageBox = None
 
@@ -403,19 +403,18 @@ class sudokuGUI(tkinter.Tk):
     def buttonClick(self, button, frame):
         if button is "new":
             pass
-            # game.newGame
-            #self.initialize
+            #self.newGame()
+            #self.initialize()
 
         elif button is "rules":
             self.print(Rules, frame)
 
 
         elif button is "hint":
-            pass
-            #self.fill(game.hint)
+            self.hint()
         elif button is "solve":
             pass
-            #self.fill(game.solve)
+            #self.solve()
         elif button is "hide":
             self.clearMessage(frame)
 
@@ -438,7 +437,7 @@ class sudokuGUI(tkinter.Tk):
 
         stateKeys = Dict1.keys()
         I = 0
-        while I < stateKeys.length():
+        while I < len(Dict1):
             x = Dict1(stateKeys(I))
             y = Dict2(stateKeys(I))
             if y.state != "readonly":
@@ -451,7 +450,24 @@ class sudokuGUI(tkinter.Tk):
 
 
 
+    def readBoard(self):
 
+        stateKeys = boxDictionary.keys()
+        boardState = dict()
+        I = 0
+        while I < len(stateKeys):
+            x = Dict1(stateKeys(I))
+            boxValue = int(x.get())
+            boardState[stateKeys(I)] = boxValue
+
+
+    def solve(self):
+        pass
+        #self.readBoard()
+
+    def hint(self):
+        pass
+        #self.readBoard()
 
 
 
