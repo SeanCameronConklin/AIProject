@@ -438,8 +438,8 @@ class sudokuGUI(tkinter.Tk):
         stateKeys = Dict1.keys()
         I = 0
         while I < len(Dict1):
-            x = Dict1(stateKeys(I))
-            y = Dict2(stateKeys(I))
+            x = Dict1[stateKeys(I)]
+            y = Dict2[stateKeys(I)]
             if y.state != "readonly":
                 y.insert(x)
                 y.configure(state = "readonly")
@@ -455,8 +455,8 @@ class sudokuGUI(tkinter.Tk):
         stateKeys = boxDictionary.keys()
         boardState = dict()
         I = 0
-        while I < len(stateKeys):
-            x = Dict1(stateKeys(I))
+        while I < len(boxDictionary):
+            x = boxDictionary[stateKeys(I)]
             boxValue = int(x.get())
             boardState[stateKeys(I)] = boxValue
 
