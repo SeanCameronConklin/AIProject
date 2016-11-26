@@ -11,36 +11,72 @@
 import tkinter
 #import sudoku.py
 
+boxDictionary = {}
+gridFrame = None
+messageBox = None
+
+
+Rules = "This is a simple soduku solver. Each red box accepts user input, each grey box is a value which was set initially by the game." \
+             "The goal of the game is to fill each row, column, and 3X3 box with vlaues 1-9.  " \
+            "To see an example, press 'New Game' followed by 'Solve'  " \
+             "'New Game' will clear the board and start a new puzzle.  " \
+             "''Hint !' will fill in the next best value in the grid.  " \
+             "'Solve' will fill in the entire grid with the solution"
+
+
+
+
 
 
 
 class sudokuGUI(tkinter.Tk):
-    boxDictionary = {}
+    # boxDictionary = {}
+    # ACanvas = None
+    # Rules = "This is a simple soduku solver. Each red box accepts user input, each grey box is a value which was set initially by the game." \
+    #         "The goal of the game is to fill each row, column, and 3X3 box with vlaues 1-9.  To see an example, press 'New Game' followed by 'Solve'" \
+    #         "'New Game' will clear the board and start a new puzzle" \
+    #         "''Hint !' will fill in the next best value in the grid" \
+    #         "'Solve' will fill in the entire grid with the solution"
+
+
     #openBoxes = {}
+    rulesPressed = False
     def __init__ (self, parent):
         tkinter.Tk.__init__(self,parent)
         self.parent = parent
         self.initialize()
 
     def initialize(self):
+
+
         Bframe = tkinter.Frame(self)
         Bframe.pack(side = "right")
 
         # bottomframe = tkinter.Frame(self)
         # bottomframe.pack()
 
+        # create text box at bottom for displaying messages
+        messageB = tkinter.Text(self, height = 10, width = 50, bg = "grey")
+        messageB.pack(side="right")
+        messageB.configure(wrap="word")
 
-        newButton = tkinter.Button(Bframe, text="New Game", command = self.buttonClick("new"))
+
+        newButton = tkinter.Button(Bframe, text="New Game", command = lambda: self.buttonClick("new", None))
         newButton.pack()
 
-        rButton = tkinter.Button(Bframe, text="Rules", command = self.buttonClick("rules"))
+        rButton = tkinter.Button(Bframe, text="Rules", command=lambda: self.buttonClick("rules", messageB))
         rButton.pack()
 
-        hButton = tkinter.Button(Bframe, text="Hint !", command = self.buttonClick("hint"))
+        hiButton = tkinter.Button(Bframe, text="Hide Rules", command=lambda: self.buttonClick("hide", messageB))
+        hiButton.pack()
+
+        hButton = tkinter.Button(Bframe, text="Hint !", command = lambda: self.buttonClick("hint", None))
         hButton.pack()
 
-        sButton = tkinter.Button(Bframe, text="Solve", command = self.buttonClick("solve"))
+        sButton = tkinter.Button(Bframe, text="Solve", command = lambda: self.buttonClick("solve", None))
         sButton.pack()
+
+
 
     #     #create a frame to hold the canvas
         CFrame = tkinter.Frame(self)
@@ -75,6 +111,11 @@ class sudokuGUI(tkinter.Tk):
         grid.create_line(500, 10, 500, 641)
         grid.create_line(570, 10, 570, 641)
 
+
+
+
+
+        ACanvas = grid
         self.createInputBoxes(grid)
         #self.fill(game.boardstate)
 
@@ -359,26 +400,34 @@ class sudokuGUI(tkinter.Tk):
 
 
 
-    def buttonClick(self, button):
+    def buttonClick(self, button, frame):
         if button is "new":
             pass
             # game.newGame
             #self.initialize
 
         elif button is "rules":
-            pass
-            #self.print(game.rules)
+            self.print(Rules, frame)
+
+
         elif button is "hint":
             pass
             #self.fill(game.hint)
         elif button is "solve":
             pass
             #self.fill(game.solve)
+        elif button is "hide":
+            self.clearMessage(frame)
 
 
-    def print(self, message):
-        label = tkinter.Label(self, justify = "center", relief = "raised", text = message)
-        label.pack(side = "bottom")
+    def print(self, message, frame):
+
+        frame.insert("end", message)
+
+    def clearMessage(self, frame):
+        frame.delete(1.0, "end")
+
+
 
     def fill (self, State):
         #@variable State should be a dictionary with keys representing board coordinates and values representing what number should
@@ -402,8 +451,9 @@ class sudokuGUI(tkinter.Tk):
 
 
 
-    def readIn(self):
-        pass
+
+
+
 
 
 
