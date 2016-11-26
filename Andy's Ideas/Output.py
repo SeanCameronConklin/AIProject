@@ -453,10 +453,11 @@ class sudokuGUI(tkinter.Tk):
     def readBoard(self):
 
         stateKeys = boxDictionary.keys()
+        stateKeys2 = stateKeys.copy()
         boardState = dict()
         I = 0
         while I < len(boxDictionary):
-            x = boxDictionary[stateKeys(I)]
+            x = boxDictionary[stateKeys.pop([I])]
             boxValue = int(x.get())
             boardState[stateKeys(I)] = boxValue
 
