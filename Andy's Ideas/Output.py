@@ -15,8 +15,8 @@ import tkinter
 
 
 class sudokuGUI(tkinter.Tk):
-    boxDictionary = []
-    openBoxes = []
+    boxDictionary = {}
+    #openBoxes = {}
     def __init__ (self, parent):
         tkinter.Tk.__init__(self,parent)
         self.parent = parent
@@ -76,6 +76,7 @@ class sudokuGUI(tkinter.Tk):
         grid.create_line(570, 10, 570, 641)
 
         self.createInputBoxes(grid)
+        # self.fill(game.boardstate)
 
     def createInputBoxes(self, window):
         #create user input boxes on each grid box
@@ -338,17 +339,17 @@ class sudokuGUI(tkinter.Tk):
         grid.create_window(510, 590, anchor="nw", window=e8_9)
         grid.create_window(580, 590, anchor="nw", window=e9_9)
 
-        boxDictionary = [((1,1), e1_1), ((2,1), e2_1), ((3,1), e3_1), ((4,1), e4_1), ((5,1), e5_1), ((6,1), e6_1), ((7,1), e7_1), ((8,1), e8_1), ((9,1), e9_1),
-                         ((1, 2), e1_2), ((2,2), e2_2), ((3,2), e3_2), ((4,2), e4_2), ((5,2), e5_2), ((6,2), e6_2), ((7,2), e7_2), ((8,2), e8_2), ((9,2), e9_2),
-                         ((1, 3), e1_3), ((2,3), e2_3), ((3,3), e3_3), ((4,3), e4_3), ((5,3), e5_3), ((6,3), e6_3), ((7,3), e7_3), ((8,3), e8_3), ((9,3), e9_3),
-                         ((1, 4), e1_4), ((2,4), e2_4), ((3,4), e3_4), ((4,4), e4_4), ((5,4), e5_4), ((6,4), e6_4), ((7,4), e7_4), ((8,4), e8_4), ((9,4), e9_4),
-                         ((1, 5), e1_5), ((2,5), e2_5), ((3,5), e3_5), ((4,5), e4_5), ((5,5), e5_5), ((6,5), e6_5), ((7,5), e7_5), ((8,5), e8_5), ((9,5), e9_5),
-                         ((1, 6), e1_6), ((2,6), e2_6), ((3,6), e3_6), ((4,6), e4_6), ((5,6), e5_6), ((6,6), e6_6), ((7,6), e7_6), ((8,6), e8_6), ((9,6), e9_6),
-                         ((1, 7), e1_7), ((2,7), e2_7), ((3,7), e3_7), ((4,7), e4_7), ((5,7), e5_7), ((6,7), e6_7), ((7,7), e7_7), ((8,7), e8_7), ((9,7), e9_7),
-                         ((1, 8), e1_8), ((2,8), e2_8), ((3,8), e3_8), ((4,8), e4_8), ((5,8), e5_8), ((6,8), e6_8), ((7,8), e7_8), ((8,8), e8_8), ((9,8), e9_8),
-                         ((1, 9), e1_9), ((2,9), e2_9), ((3,9), e3_9), ((4,9), e4_9), ((5,9), e5_9), ((6,9), e6_9), ((7,9), e7_9), ((8,9), e8_9), ((9,9), e9_9),]
+        boxDictionary = {'A1':e1_1, 'A2': e2_1, 'A3': e3_1, 'A4': e4_1, 'A5': e5_1, 'A6': e6_1, 'A7': e7_1, 'A8': e8_1, 'A9': e9_1,
+                         'B1':e1_2, 'B2': e2_2, 'B3': e3_2, 'B4': e4_2, 'B5': e5_2, 'B6': e6_2, 'B7': e7_2, 'B8': e8_2, 'B9': e9_2,
+                         'C1':e1_3, 'C2': e2_3, 'C3': e3_3, 'C4': e4_3, 'C5': e5_3, 'C6': e6_3, 'C7': e7_3, 'C8': e8_3, 'C9': e9_3,
+                         'D1':e1_4, 'D2': e2_4, 'D3': e3_4, 'D4': e4_4, 'D5': e5_4, 'D6': e6_4, 'D7': e7_4, 'D8': e8_4, 'D9': e9_4,
+                         'E1':e1_5, 'E2': e2_5, 'E3': e3_5, 'E4': e4_5, 'E5': e5_5, 'E6': e6_5, 'E7': e7_5, 'E8': e8_5, 'E9': e9_5,
+                         'F1':e1_6, 'F2': e2_6, 'F3': e3_6, 'F4': e4_6, 'F5': e5_6, 'F6': e6_6, 'F7': e7_6, 'F8': e8_6, 'F9': e9_6,
+                         'G1':e1_7, 'G2': e2_7, 'G3': e3_7, 'G4': e4_7, 'G5': e5_7, 'G6': e6_7, 'G7': e7_7, 'G8': e8_7, 'G9': e9_7,
+                         'H1':e1_8, 'H2': e2_8, 'H3': e3_8, 'H4': e4_8, 'H5': e5_8, 'H6': e6_8, 'H7': e7_8, 'H8': e8_8, 'H9': e9_8,
+                         'I1':e1_9, 'I2': e2_9, 'I3': e3_9, 'I4': e4_9, 'I5': e5_9, 'I6': e6_9, 'I7': e7_9, 'I8': e8_9, 'I9': e9_9}
 
-        fill
+
 
 
 
@@ -378,8 +379,25 @@ class sudokuGUI(tkinter.Tk):
     def print(self, message):
         pass
 
-    def fill (self, tofill, available):
+    def fill (self, State):
+        #@variable State should be a dictionary with keys representing board coordinates and values representing what number should
+        #be in that coordinate ie[((1,1), 4), ((3,3), 2), etc]
         pass
+        Dict1 = State
+        Dict2 = boxDictionary
+
+        stateKeys = Dict1.keys()
+        I = 0
+        while I < stateKeys.length():
+            x = Dict1(stateKeys(I))
+            y = Dict2(stateKeys(I))
+            y.insert(x)
+            y.configure(state = "readonly")
+
+
+
+
+
 
 
 
