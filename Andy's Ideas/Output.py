@@ -32,6 +32,8 @@ class sudokuGUI(tkinter.Tk):
 
     rulesPressed = False
     boxDictionary = dict()
+    gameState = {"A1":1, "B6":6, "F2":2}
+    bgColor = "red"
     #game = solver()
 
     def __init__ (self, parent):
@@ -110,173 +112,173 @@ class sudokuGUI(tkinter.Tk):
 
         ACanvas = grid
         self.createInputBoxes(grid)
-        #self.fill(game.boardstate)
+        self.fill(sudokuGUI.gameState)
 
     def createInputBoxes(self, window):
         #create user input boxes on each grid box
         grid = window
 
-        e1_1 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e1_1 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e2_1 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e2_1 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e3_1 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e3_1 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e4_1 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e4_1 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e5_1 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e5_1 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e6_1 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e6_1 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e7_1 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e7_1 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e8_1 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e8_1 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e9_1 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e9_1 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e1_2 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e1_2 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e2_2 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e2_2 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e3_2 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e3_2 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e4_2 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e4_2 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e5_2 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e5_2 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e6_2 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e6_2 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e7_2 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e7_2 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e8_2 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e8_2 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e9_2 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e9_2 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e1_3 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e1_3 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e2_3 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e2_3 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e3_3 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e3_3 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e4_3 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e4_3 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e5_3 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e5_3 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e6_3 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e6_3 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e7_3 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e7_3 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e8_3 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e8_3 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e9_3 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e9_3 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e1_4 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e1_4 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e2_4 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e2_4 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e3_4 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e3_4 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e4_4 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e4_4 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e5_4 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e5_4 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e6_4 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e6_4 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e7_4 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e7_4 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e8_4 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e8_4 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e9_4 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e9_4 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e1_5 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e1_5 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e2_5 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e2_5 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e3_5 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e3_5 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e4_5 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e4_5 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e5_5 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e5_5 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e6_5 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e6_5 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e7_5 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e7_5 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e8_5 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e8_5 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e9_5 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e9_5 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e1_6 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e1_6 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e2_6 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e2_6 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e3_6 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e3_6 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e4_6 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e4_6 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e5_6 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e5_6 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e6_6 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e6_6 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e7_6 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e7_6 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e8_6 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e8_6 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e9_6 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e9_6 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e1_7 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e1_7 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e2_7 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e2_7 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e3_7 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e3_7 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e4_7 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e4_7 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e5_7 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e5_7 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e6_7 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e6_7 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e7_7 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e7_7 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e8_7 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e8_7 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e9_7 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e9_7 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e1_8 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e1_8 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e2_8 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e2_8 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e3_8 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e3_8 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e4_8 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e4_8 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e5_8 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e5_8 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e6_8 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e6_8 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e7_8 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e7_8 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e8_8 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e8_8 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e9_8 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e9_8 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e1_9 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e1_9 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e2_9 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e2_9 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e3_9 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e3_9 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e4_9 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e4_9 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e5_9 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e5_9 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e6_9 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e6_9 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e7_9 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e7_9 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e8_9 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e8_9 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
-        e9_9 = tkinter.Entry(self, width = 4, bg = "red", relief = "flat", font = 70, readonlybackground = "grey",
+        e9_9 = tkinter.Entry(self, width = 4, bg = sudokuGUI.bgColor, relief = "flat", font = 70, readonlybackground = "grey",
                                  justify = "center" )
 
 
@@ -429,16 +431,17 @@ class sudokuGUI(tkinter.Tk):
         Dict2 = sudokuGUI.boxDictionary
 
         stateKeys = Dict1.keys()
-        I = 0
-        while I < len(Dict1):
-            x = Dict1[stateKeys(I)]
-            y = Dict2[stateKeys(I)]
-            if y.state != "readonly":
-                y.insert(x)
-                y.configure(state = "readonly")
-                I = I + 1
-            else:
-                I = I + 1
+        boardKeys = Dict2.keys()
+        for I in stateKeys:
+            for W in boardKeys:
+                if I is W:
+                    x = Dict1[I]
+                    y = Dict2[I]
+                    # if y.get() is None:
+                    y.insert(0, x)
+                    y.configure(bg = "grey")
+
+
 
 
 
@@ -461,6 +464,7 @@ class sudokuGUI(tkinter.Tk):
     def clearBoard(self):
         gridBoxes = sudokuGUI.boxDictionary.values()
         for x in gridBoxes:
+            x.configure(bg = sudokuGUI.bgColor)
             x.delete(0, "end")
 
 
