@@ -476,17 +476,82 @@ class sudokuGUI(tkinter.Tk):
     def solve(self):
         # pass
         boardState = self.readBoard()
+        game.solve(boardState)
 
 
     def hint(self):
         # pass
         boardState = self.readBoard()
+        game.hint(boardState)
 
 
 
 
-
-
+class sudokuSolver:
+    pass
+    # validNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    # dictcolumn = {'A1': c1, 'B1': c2, 'C1': c3, 'D1': c4, 'E1': c5, 'F1': c6, 'G1': c7, 'H1': c8, 'I1': c9,
+    #           'A2': c1, 'B2': c2, 'C2': c3, 'D2': c4, 'E2': c5, 'F2': c6, 'G2': c7, 'H2': c8, 'I2': c9,
+    #           'A3': c1, 'B3': c2, 'C3': c3, 'D3': c4, 'E3': c5, 'F3': c6, 'G3': c7, 'H3': c8, 'I3': c9,
+    #           'A4': c1, 'B4': c2, 'C4': c3, 'D4': c4, 'E4': c5, 'F4': c6, 'G4': c7, 'H4': c8, 'I4': c9,
+    #           'A5': c1, 'B5': c2, 'C5': c3, 'D5': c4, 'E5': c5, 'F5': c6, 'G5': c7, 'H5': c8, 'I5': c9,
+    #           'A6': c1, 'B6': c2, 'C6': c3, 'D6': c4, 'E6': c5, 'F6': c6, 'G6': c7, 'H6': c8, 'I6': c9,
+    #           'A7': c1, 'B7': c2, 'C7': c3, 'D7': c4, 'E7': c5, 'F7': c6, 'G7': c7, 'H7': c8, 'I7': c9,
+    #           'A8': c1, 'B8': c2, 'C8': c3, 'D8': c4, 'E8': c5, 'F8': c6, 'G8': c7, 'H8': c8, 'I8': c9,
+    #           'A9': c1, 'B9': c2, 'C9': c3, 'D9': c4, 'E9': c5, 'F9': c6, 'G9': c7, 'H9': c8, 'I9': c9}
+    #
+    # dictrow = {'A1': r1, 'B1': r2, 'C1': r3, 'D1': r4, 'E1': r5, 'F1': r6, 'G1': r7, 'H1': r8, 'I1': r9,
+    #             'A2': r1, 'B2': r2, 'C2': r3, 'D2': r4, 'E2': r5, 'F2': r6, 'G2': r7, 'H2': r8, 'I2': r9,
+    #             'A3': r1, 'B3': r2, 'C3': r3, 'D3': r4, 'E3': r5, 'F3': r6, 'G3': r7, 'H3': r8, 'I3': r9,
+    #             'A4': r1, 'B4': r2, 'C4': r3, 'D4': r4, 'E4': r5, 'F4': r6, 'G4': r7, 'H4': r8, 'I4': r9,
+    #             'A5': r1, 'B5': r2, 'C5': r3, 'D5': r4, 'E5': r5, 'F5': r6, 'G5': r7, 'H5': r8, 'I5': r9,
+    #             'A6': r1, 'B6': r2, 'C6': r3, 'D6': r4, 'E6': r5, 'F6': r6, 'G6': r7, 'H6': r8, 'I6': r9,
+    #             'A7': r1, 'B7': r2, 'C7': r3, 'D7': r4, 'E7': r5, 'F7': r6, 'G7': r7, 'H7': r8, 'I7': r9,
+    #             'A8': r1, 'B8': r2, 'C8': r3, 'D8': r4, 'E8': r5, 'F8': r6, 'G8': r7, 'H8': r8, 'I8': r9,
+    #             'A9': r1, 'B9': r2, 'C9': r3, 'D9': r4, 'E9': r5, 'F9': r6, 'G9': r7, 'H9': r8, 'I9': r9}
+    #
+    # dictbox = {'A1': b1, 'B1': b1, 'C1': b1, 'D1': b2, 'E1': b2, 'F1': b2, 'G1': b3, 'H1': b3, 'I1': b3,
+    #           'A2': b1, 'B2': b1, 'C2': b1, 'D2': b2, 'E2': b2, 'F2': b2, 'G2': b3, 'H2': b3, 'I2': b3,
+    #           'A3': b1, 'B3': b1, 'C3': b1, 'D3': b2, 'E3': b2, 'F3': b2, 'G3': b3, 'H3': b3, 'I3': b3,
+    #           'A4': b4, 'B4': b4, 'C4': b4, 'D4': b5, 'E4': b5, 'F4': b5, 'G4': b6, 'H4': b6, 'I4': b6,
+    #           'A5': b4, 'B5': b4, 'C5': b4, 'D5': b5, 'E5': b5, 'F5': b5, 'G5': b6, 'H5': b6, 'I5': b6,
+    #           'A6': b4, 'B6': b4, 'C6': b4, 'D6': b5, 'E6': b5, 'F6': b5, 'G6': b6, 'H6': b6, 'I6': b6,
+    #           'A7': b7, 'B7': b7, 'C7': b7, 'D7': b8, 'E7': b8, 'F7': b8, 'G7': b9, 'H7': b9, 'I7': b9,
+    #           'A8': b7, 'B8': b7, 'C8': b7, 'D8': b8, 'E8': b8, 'F8': b8, 'G8': b9, 'H8': b9, 'I8': b9,
+    #           'A9': b7, 'B9': b7, 'C9': b7, 'D9': b8, 'E9': b8, 'F9': b8, 'G9': b9, 'H9': b9, 'I9': b9}
+    # def validMoves(self):
+    #     row1 = sudokuSolver.validNumbers.copy()
+    #     row2 = sudokuSolver.validNumbers.copy()
+    #     row3 = sudokuSolver.validNumbers.copy()
+    #     row4 = sudokuSolver.validNumbers.copy()
+    #     row5 = sudokuSolver.validNumbers.copy()
+    #     row6 = sudokuSolver.validNumbers.copy()
+    #     row7 = sudokuSolver.validNumbers.copy()
+    #     row8 = sudokuSolver.validNumbers.copy()
+    #     row9 = sudokuSolver.validNumbers.copy()
+    #     column1 = sudokuSolver.validNumbers.copy()
+    #     column2 = sudokuSolver.validNumbers.copy()
+    #     column3 = sudokuSolver.validNumbers.copy()
+    #     column4 = sudokuSolver.validNumbers.copy()
+    #     column5 = sudokuSolver.validNumbers.copy()
+    #     column6 = sudokuSolver.validNumbers.copy()
+    #     column7 = sudokuSolver.validNumbers.copy()
+    #     column8 = sudokuSolver.validNumbers.copy()
+    #     column9 = sudokuSolver.validNumbers.copy()
+    #     box1 = sudokuSolver.validNumbers.copy()
+    #     box2 = sudokuSolver.validNumbers.copy()
+    #     box3 = sudokuSolver.validNumbers.copy()
+    #     box4 = sudokuSolver.validNumbers.copy()
+    #     box5 = sudokuSolver.validNumbers.copy()
+    #     box6 = sudokuSolver.validNumbers.copy()
+    #     box7 = sudokuSolver.validNumbers.copy()
+    #     box8 = sudokuSolver.validNumbers.copy()
+    #     box9 = sudokuSolver.validNumbers.copy()
+    # def solve(self, boardState):
+    #     pass
+    #     gameState = dict()
+    #
+    #     return gameState
 
 
 
