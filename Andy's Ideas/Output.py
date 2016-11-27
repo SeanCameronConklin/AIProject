@@ -11,7 +11,7 @@
 import tkinter
 #import sudoku.py
 
-boxDictionary = dict()
+# boxDictionary = dict
 gridFrame = None
 messageBox = None
 
@@ -41,6 +41,7 @@ class sudokuGUI(tkinter.Tk):
 
     #openBoxes = {}
     rulesPressed = False
+    boxDictionary = dict()
     def __init__ (self, parent):
         tkinter.Tk.__init__(self,parent)
         self.parent = parent
@@ -380,7 +381,7 @@ class sudokuGUI(tkinter.Tk):
         grid.create_window(510, 590, anchor="nw", window=e8_9)
         grid.create_window(580, 590, anchor="nw", window=e9_9)
 
-        boxDictionary = {'A1':e1_1, 'A2': e2_1, 'A3': e3_1, 'A4': e4_1, 'A5': e5_1, 'A6': e6_1, 'A7': e7_1, 'A8': e8_1, 'A9': e9_1,
+        sudokuGUI.boxDictionary = {'A1':e1_1, 'A2': e2_1, 'A3': e3_1, 'A4': e4_1, 'A5': e5_1, 'A6': e6_1, 'A7': e7_1, 'A8': e8_1, 'A9': e9_1,
                          'B1':e1_2, 'B2': e2_2, 'B3': e3_2, 'B4': e4_2, 'B5': e5_2, 'B6': e6_2, 'B7': e7_2, 'B8': e8_2, 'B9': e9_2,
                          'C1':e1_3, 'C2': e2_3, 'C3': e3_3, 'C4': e4_3, 'C5': e5_3, 'C6': e6_3, 'C7': e7_3, 'C8': e8_3, 'C9': e9_3,
                          'D1':e1_4, 'D2': e2_4, 'D3': e3_4, 'D4': e4_4, 'D5': e5_4, 'D6': e6_4, 'D7': e7_4, 'D8': e8_4, 'D9': e9_4,
@@ -402,9 +403,9 @@ class sudokuGUI(tkinter.Tk):
 
     def buttonClick(self, button, frame):
         if button is "new":
-            pass
+
             #self.newGame()
-            #self.initialize()
+            self.clearBoard()
 
         elif button is "rules":
             self.print(Rules, frame)
@@ -413,8 +414,8 @@ class sudokuGUI(tkinter.Tk):
         elif button is "hint":
             self.hint()
         elif button is "solve":
-            pass
-            #self.solve()
+
+            self.solve()
         elif button is "hide":
             self.clearMessage(frame)
 
@@ -433,7 +434,7 @@ class sudokuGUI(tkinter.Tk):
         #be in that coordinate ie{A1:4, B3:2, etc}
 
         Dict1 = State
-        Dict2 = boxDictionary
+        Dict2 = sudokuGUI.boxDictionary
 
         stateKeys = Dict1.keys()
         I = 0
@@ -452,23 +453,33 @@ class sudokuGUI(tkinter.Tk):
 
     def readBoard(self):
 
-        stateKeys = boxDictionary.keys()
-        stateKeys2 = stateKeys.copy()
+        stateKeys = sudokuGUI.boxDictionary.keys()
         boardState = dict()
-        I = 0
-        while I < len(boxDictionary):
-            x = boxDictionary[stateKeys.pop([I])]
+        # I = 0
+        # while I < len(boxDictionary):
+        for x in stateKeys:
             boxValue = int(x.get())
-            boardState[stateKeys(I)] = boxValue
+            boardState[x] = boxValue
+        return boardState
+
+    def clearBoard(self):
+        gridBoxes = sudokuGUI.boxDictionary.values()
+        for x in gridBoxes:
+            x.delete(0, "end")
+
+
+
+
 
 
     def solve(self):
-        pass
-        #self.readBoard()
+        # pass
+        boardState = self.readBoard()
+
 
     def hint(self):
-        pass
-        #self.readBoard()
+        # pass
+        boardState = self.readBoard()
 
 
 
