@@ -396,7 +396,7 @@ class sudokuGUI(tkinter.Tk):
     def buttonClick(self, button, frame):
         if button is "new":
 
-            #self.newGame()
+            #game.newGame()
             self.clearBoard()
 
         elif button is "rules":
