@@ -32,7 +32,7 @@ class sudokuGUI(tkinter.Tk):
 
     rulesPressed = False
     boxDictionary = dict()
-    gameState = {"A1":1, "B6":6, "F2":2}
+    # gameState = {"A1":1, "B6":6, "F2":2}
     bgColor = "red"
     #game = solver()
 
@@ -112,7 +112,7 @@ class sudokuGUI(tkinter.Tk):
 
         ACanvas = grid
         self.createInputBoxes(grid)
-        self.fill(sudokuGUI.gameState)
+        # self.fill(sudoku.gameState)
 
     def createInputBoxes(self, window):
         #create user input boxes on each grid box
@@ -437,9 +437,10 @@ class sudokuGUI(tkinter.Tk):
                 if I is W:
                     x = Dict1[I]
                     y = Dict2[I]
-                    # if y.get() is None:
-                    y.insert(0, x)
-                    y.configure(bg = "grey")
+                    # g = y.get()
+                    if y.get() is '':
+                        y.insert(0, x)
+                        y.configure(bg = "grey")
 
 
 
