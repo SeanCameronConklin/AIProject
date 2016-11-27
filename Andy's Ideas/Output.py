@@ -9,11 +9,10 @@
 #The purpose of this script is to act as the GUI for a suduko game
 
 import tkinter
-#import sudoku.py
 
-# boxDictionary = dict
-gridFrame = None
-messageBox = None
+
+
+
 
 
 Rules = "This is a simple soduku solver. Each red box accepts user input, each grey box is a value which was set initially by the game." \
@@ -30,18 +29,11 @@ Rules = "This is a simple soduku solver. Each red box accepts user input, each g
 
 
 class sudokuGUI(tkinter.Tk):
-    # boxDictionary = {}
-    # ACanvas = None
-    # Rules = "This is a simple soduku solver. Each red box accepts user input, each grey box is a value which was set initially by the game." \
-    #         "The goal of the game is to fill each row, column, and 3X3 box with vlaues 1-9.  To see an example, press 'New Game' followed by 'Solve'" \
-    #         "'New Game' will clear the board and start a new puzzle" \
-    #         "''Hint !' will fill in the next best value in the grid" \
-    #         "'Solve' will fill in the entire grid with the solution"
 
-
-    #openBoxes = {}
     rulesPressed = False
     boxDictionary = dict()
+    #game = solver()
+
     def __init__ (self, parent):
         tkinter.Tk.__init__(self,parent)
         self.parent = parent
@@ -452,13 +444,17 @@ class sudokuGUI(tkinter.Tk):
 
 
     def readBoard(self):
-
-        stateKeys = sudokuGUI.boxDictionary.keys()
+        boxes = sudokuGUI.boxDictionary
+        squareKeys = boxes.keys()
         boardState = dict()
         # I = 0
         # while I < len(boxDictionary):
-        for x in stateKeys:
-            boxValue = int(x.get())
+        for x in squareKeys:
+            square = boxes[x]
+            try:
+                boxValue = int(square.get())
+            except:
+                boxValue = None
             boardState[x] = boxValue
         return boardState
 
@@ -494,10 +490,4 @@ class sudokuGUI(tkinter.Tk):
 if __name__ == "__main__":
     app = sudokuGUI(None)
     app.title('sudoku player 1.0')
-    #game = sudoku
-    #game.update(self.readIn())
-
-
-
-
     app.mainloop()
