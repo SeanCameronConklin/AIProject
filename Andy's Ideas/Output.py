@@ -684,7 +684,7 @@ class sudokuGUI(tkinter.Tk):
                     # g = y.get()
                     if y.get() is '':
                         y.insert(0, x)
-                        y.configure(bg = "grey")
+                        y.configure(state = "readonly")
 
 
 
@@ -710,7 +710,7 @@ class sudokuGUI(tkinter.Tk):
     def clearBoard(self):
         gridBoxes = sudokuGUI.boxDictionary.values()
         for x in gridBoxes:
-            x.configure(bg = sudokuGUI.bgColor)
+            x.configure(state = "normal", bg = sudokuGUI.bgColor)
             x.delete(0, "end")
 
 
