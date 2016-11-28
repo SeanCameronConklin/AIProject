@@ -34,34 +34,36 @@ class sudokuSolver():
     dictcolumn = dict()
     dictrow = dict()
     dictbox = dict()
-    r1 = ()
-    r2 = ()
-    r3 = ()
-    r4 = ()
-    r5 = ()
-    r6 = ()
-    r7 = ()
-    r8 = ()
-    r9 = ()
-    c1 = ()
-    c2 = ()
-    c3 = ()
-    c4 = ()
-    c5 = ()
-    c6 = ()
-    c7 = ()
-    c8 = ()
-    c9 = ()
-    b1 = ()
-    b2 = ()
-    b3 = ()
-    b4 = ()
-    b5 = ()
-    b6 = ()
-    b7 = ()
-    b8 = ()
-    b9 = ()
+    r1 = []
+    r2 = []
+    r3 = []
+    r4 = []
+    r5 = []
+    r6 = []
+    r7 = []
+    r8 = []
+    r9 = []
+    c1 = []
+    c2 = []
+    c3 = []
+    c4 = []
+    c5 = []
+    c6 = []
+    c7 = []
+    c8 = []
+    c9 = []
+    b1 = []
+    b2 = []
+    b3 = []
+    b4 = []
+    b5 = []
+    b6 = []
+    b7 = []
+    b8 = []
+    b9 = []
     puzzleState = dict()
+    openSquares = []
+
 
 
     def __init__(self):
@@ -121,46 +123,115 @@ class sudokuSolver():
         b8 = sudokuSolver.b8
         b9 = sudokuSolver.b9
 
-        sudokuSolver. dictcolumn = {'A1': c1, 'B1': c2, 'C1': c3, 'D1': c4, 'E1': c5, 'F1': c6, 'G1': c7, 'H1': c8, 'I1': c9,
-                      'A2': c1, 'B2': c2, 'C2': c3, 'D2': c4, 'E2': c5, 'F2': c6, 'G2': c7, 'H2': c8, 'I2': c9,
-                      'A3': c1, 'B3': c2, 'C3': c3, 'D3': c4, 'E3': c5, 'F3': c6, 'G3': c7, 'H3': c8, 'I3': c9,
-                      'A4': c1, 'B4': c2, 'C4': c3, 'D4': c4, 'E4': c5, 'F4': c6, 'G4': c7, 'H4': c8, 'I4': c9,
-                      'A5': c1, 'B5': c2, 'C5': c3, 'D5': c4, 'E5': c5, 'F5': c6, 'G5': c7, 'H5': c8, 'I5': c9,
-                      'A6': c1, 'B6': c2, 'C6': c3, 'D6': c4, 'E6': c5, 'F6': c6, 'G6': c7, 'H6': c8, 'I6': c9,
-                      'A7': c1, 'B7': c2, 'C7': c3, 'D7': c4, 'E7': c5, 'F7': c6, 'G7': c7, 'H7': c8, 'I7': c9,
-                      'A8': c1, 'B8': c2, 'C8': c3, 'D8': c4, 'E8': c5, 'F8': c6, 'G8': c7, 'H8': c8, 'I8': c9,
-                      'A9': c1, 'B9': c2, 'C9': c3, 'D9': c4, 'E9': c5, 'F9': c6, 'G9': c7, 'H9': c8, 'I9': c9}
+        sudokuSolver. dictcolumn = {'A1': c1, 'A2': c2, 'A3': c3, 'A4': c4, 'A5': c5, 'A6': c6, 'A7': c7, 'A8': c8, 'A9': c9,
+                                    'B1': c1, 'B2': c2, 'B3': c3, 'B4': c4, 'B5': c5, 'B6': c6, 'B7': c7, 'B8': c8, 'B9': c9,
+                                    'C1': c1, 'C2': c2, 'C3': c3, 'C4': c4, 'C5': c5, 'C6': c6, 'C7': c7, 'C8': c8, 'C9': c9,
+                                    'D1': c1, 'D2': c2, 'D3': c3, 'D4': c4, 'D5': c5, 'D6': c6, 'D7': c7, 'D8': c8, 'D9': c9,
+                                    'E1': c1, 'E2': c2, 'E3': c3, 'E4': c4, 'E5': c5, 'E6': c6, 'E7': c7, 'E8': c8, 'E9': c9,
+                                    'F1': c1, 'F2': c2, 'F3': c3, 'F4': c4, 'F5': c5, 'F6': c6, 'F7': c7, 'F8': c8, 'F9': c9,
+                                    'G1': c1, 'G2': c2, 'G3': c3, 'G4': c4, 'G5': c5, 'G6': c6, 'G7': c7, 'G8': c8, 'G9': c9,
+                                    'H1': c1, 'H2': c2, 'H3': c3, 'H4': c4, 'H5': c5, 'H6': c6, 'H7': c7, 'H8': c8, 'H9': c9,
+                                    'I1': c1, 'I2': c2, 'I3': c3, 'I4': c4, 'I5': c5, 'I6': c6, 'I7': c7, 'I8': c8, 'I9': c9,
+                                    }
 
-        sudokuSolver. dictrow = {'A1': r1, 'B1': r2, 'C1': r3, 'D1': r4, 'E1': r5, 'F1': r6, 'G1': r7, 'H1': r8, 'I1': r9,
-                   'A2': r1, 'B2': r2, 'C2': r3, 'D2': r4, 'E2': r5, 'F2': r6, 'G2': r7, 'H2': r8, 'I2': r9,
-                   'A3': r1, 'B3': r2, 'C3': r3, 'D3': r4, 'E3': r5, 'F3': r6, 'G3': r7, 'H3': r8, 'I3': r9,
-                   'A4': r1, 'B4': r2, 'C4': r3, 'D4': r4, 'E4': r5, 'F4': r6, 'G4': r7, 'H4': r8, 'I4': r9,
-                   'A5': r1, 'B5': r2, 'C5': r3, 'D5': r4, 'E5': r5, 'F5': r6, 'G5': r7, 'H5': r8, 'I5': r9,
-                   'A6': r1, 'B6': r2, 'C6': r3, 'D6': r4, 'E6': r5, 'F6': r6, 'G6': r7, 'H6': r8, 'I6': r9,
-                   'A7': r1, 'B7': r2, 'C7': r3, 'D7': r4, 'E7': r5, 'F7': r6, 'G7': r7, 'H7': r8, 'I7': r9,
-                   'A8': r1, 'B8': r2, 'C8': r3, 'D8': r4, 'E8': r5, 'F8': r6, 'G8': r7, 'H8': r8, 'I8': r9,
-                   'A9': r1, 'B9': r2, 'C9': r3, 'D9': r4, 'E9': r5, 'F9': r6, 'G9': r7, 'H9': r8, 'I9': r9}
+        sudokuSolver. dictrow = {'A1': r1, 'A2': r2, 'A3': r3, 'A4': r4, 'A5': r5, 'A6': r6, 'A7': r7, 'A8': r8, 'A9': r9,
+                   'B1': r1, 'B2': r2, 'B3': r3, 'B4': r4, 'B5': r5, 'B6': r6, 'B7': r7, 'B8': r8, 'B9': r9,
+                   'C1': r1, 'C2': r2, 'C3': r3, 'C4': r4, 'C5': r5, 'C6': r6, 'C7': r7, 'C8': r8, 'C9': r9,
+                   'D1': r1, 'D2': r2, 'D3': r3, 'D4': r4, 'D5': r5, 'D6': r6, 'D7': r7, 'D8': r8, 'D9': r9,
+                   'E1': r1, 'E2': r2, 'E3': r3, 'E4': r4, 'E5': r5, 'E6': r6, 'E7': r7, 'E8': r8, 'E9': r9,
+                   'F1': r1, 'F2': r2, 'F3': r3, 'F4': r4, 'F5': r5, 'F6': r6, 'F7': r7, 'F8': r8, 'F9': r9,
+                   'G1': r1, 'G2': r2, 'G3': r3, 'G4': r4, 'G5': r5, 'G6': r6, 'G7': r7, 'G8': r8, 'G9': r9,
+                   'H1': r1, 'H2': r2, 'H3': r3, 'H4': r4, 'H5': r5, 'H6': r6, 'H7': r7, 'H8': r8, 'H9': r9,
+                   'I1': r1, 'I2': r2, 'I3': r3, 'I4': r4, 'I5': r5, 'I6': r6, 'I7': r7, 'I8': r8, 'I9': r9}
 
-        sudokuSolver. dictbox = {'A1': b1, 'B1': b1, 'C1': b1, 'D1': b2, 'E1': b2, 'F1': b2, 'G1': b3, 'H1': b3, 'I1': b3,
-                   'A2': b1, 'B2': b1, 'C2': b1, 'D2': b2, 'E2': b2, 'F2': b2, 'G2': b3, 'H2': b3, 'I2': b3,
-                   'A3': b1, 'B3': b1, 'C3': b1, 'D3': b2, 'E3': b2, 'F3': b2, 'G3': b3, 'H3': b3, 'I3': b3,
-                   'A4': b4, 'B4': b4, 'C4': b4, 'D4': b5, 'E4': b5, 'F4': b5, 'G4': b6, 'H4': b6, 'I4': b6,
-                   'A5': b4, 'B5': b4, 'C5': b4, 'D5': b5, 'E5': b5, 'F5': b5, 'G5': b6, 'H5': b6, 'I5': b6,
-                   'A6': b4, 'B6': b4, 'C6': b4, 'D6': b5, 'E6': b5, 'F6': b5, 'G6': b6, 'H6': b6, 'I6': b6,
-                   'A7': b7, 'B7': b7, 'C7': b7, 'D7': b8, 'E7': b8, 'F7': b8, 'G7': b9, 'H7': b9, 'I7': b9,
-                   'A8': b7, 'B8': b7, 'C8': b7, 'D8': b8, 'E8': b8, 'F8': b8, 'G8': b9, 'H8': b9, 'I8': b9,
-                   'A9': b7, 'B9': b7, 'C9': b7, 'D9': b8, 'E9': b8, 'F9': b8, 'G9': b9, 'H9': b9, 'I9': b9}
+        sudokuSolver. dictbox = {'A1': b1, 'A2': b1, 'A3': b1, 'A4': b2, 'A5': b2, 'A6': b2, 'A7': b3, 'A8': b3, 'A9': b3,
+                   'B1': b1, 'B2': b1, 'B3': b1, 'B4': b2, 'B5': b2, 'B6': b2, 'B7': b3, 'B8': b3, 'B9': b3,
+                   'C1': b1, 'C2': b1, 'C3': b1, 'C4': b2, 'C5': b2, 'C6': b2, 'C7': b3, 'C8': b3, 'C9': b3,
+                   'D1': b4, 'D2': b4, 'D3': b4, 'D4': b5, 'D5': b5, 'D6': b5, 'D7': b6, 'D8': b6, 'D9': b6,
+                   'E1': b4, 'E2': b4, 'E3': b4, 'E4': b5, 'E5': b5, 'E6': b5, 'E7': b6, 'E8': b6, 'E9': b6,
+                   'F1': b4, 'F2': b4, 'F3': b4, 'F4': b5, 'F5': b5, 'F6': b5, 'F7': b6, 'F8': b6, 'F9': b6,
+                   'G1': b7, 'G2': b7, 'G3': b7, 'G4': b8, 'G5': b8, 'G6': b8, 'G7': b9, 'G8': b9, 'G9': b9,
+                   'H1': b7, 'H2': b7, 'H3': b7, 'H4': b8, 'H5': b8, 'H6': b8, 'H7': b9, 'H8': b9, 'H9': b9,
+                   'I1': b7, 'I2': b7, 'I3': b7, 'I4': b8, 'I5': b8, 'I6': b8, 'I7': b9, 'I8': b9, 'I9': b9}
+
+        sudokuSolver.openSquares = ['A1', 'B1', 'C1', 'D1', 'E1', 'F1', 'G1', 'H1', 'I1',
+                       'A2', 'B2', 'C2', 'D2', 'E2', 'F2', 'G2', 'H2', 'I2',
+                       'A3', 'B3', 'C3', 'D3', 'E3', 'F3', 'G3', 'H3', 'I3',
+                       'A4', 'B4', 'C4', 'D4', 'E4', 'F4', 'G4', 'H4', 'I4',
+                       'A5', 'B5', 'C5', 'D5', 'E5', 'F5', 'G5', 'H5', 'I5',
+                       'A6', 'B6', 'C6', 'D6', 'E6', 'F6', 'G6', 'H6', 'I6',
+                       'A7', 'B7', 'C7', 'D7', 'E7', 'F7', 'G7', 'H7', 'I7',
+                       'A8', 'B8', 'C8', 'D8', 'E8', 'F8', 'G8', 'H8', 'I8',
+                       'A9', 'B9', 'C9', 'D9', 'E9', 'F9', 'G9', 'H9', 'I9', ]
 
 
     def solve(self, boardState):
         pass
+        #read current board state and delete values from valid moves pool
         gameState = dict()
+        openSquares = sudokuSolver.openSquares
+        StateKeys = boardState.keys()
+        for x in StateKeys:
+            I = boardState[x]
+            R = sudokuSolver.dictrow[x]
+            C = sudokuSolver.dictcolumn[x]
+            B = sudokuSolver.dictbox[x]
+            if I is not None:
+                if I in R:
+                    deleteR = R.index(I)
+                    del R[deleteR]
+                if I in C:
+                    deleteC = C.index(I)
+                    del C[deleteC]
+                if I in B:
+                    deleteB = B.index(I)
+                    del B[deleteB]
 
+        #delete any moves the system makes from the valid moves pool
+        systemMoves = dict()
+        while openSquares is not None:
+            systemMoveKeys = systemMoves.keys()
+            if StateKeys is not None:
+                for v in StateKeys:
+                    if boardState[v] is not None:
+                        deleteV = openSquares.index(v)
+                        del openSquares[deleteV]
+            elif systemMoves is not None:
+                for y in systemMoveKeys:
+                    deleteY = openSquares.index(y)
+                    del openSquares[deleteY]
+                #this is where the system will search for moves
+            for x in openSquares:
+                valueT = 1
+                while valueT < 9:
+                    columnNum = sudokuSolver.dictcolumn[x]
+                    rowNum = sudokuSolver.dictrow[x]
+                    boxNum = sudokuSolver.dictbox[x]
+                    if valueT in columnNum and valueT in rowNum and valueT in boxNum:
+                        systemMoves[x] = valueT
+                        deletec = columnNum.index(valueT)
+                        del columnNum[deletec]
+                        deleter = rowNum.index(valueT)
+                        del rowNum[deleter]
+                        deleteb = boxNum.index(valueT)
+                        del boxNum[deleteb]
+                        deletex = openSquares.index(x)
+                        del openSquares[deletex]
+
+                    valueT += 1
+
+
+
+
+
+
+        gameState = systemMoves
         return gameState
     def hint(self, boardState):
         pass
 
     def newPuzzle(self):
+        self.__init__()
         newState = self.randPuzzles()
         sudokuSolver.puzzleState = newState
 
@@ -169,7 +240,15 @@ class sudokuSolver():
 
     def randPuzzles(self):
         puzzleNumber = random.randint(1,5)
-        puzzle1 = {'A1': 1}
+        puzzle1 = {'A1': 3, 'A3': 1, 'A4': 5, 'A5': 2, 'A6': 9,
+                   'B1': 9, 'B3': 4, 'B7': 3, 'B8': 5,
+                   'C5': 3, 'C8': 8,
+                   'D1': 1, 'D2': 2, 'D3': 5, 'D4': 3, 'D5': 8,
+                   'E4': 1, 'E5': 4, 'E7': 7, 'E9': 3,
+                   'F1': 7, 'F9': 5,
+                   'G1': 8, 'G6': 3, 'G8': 9,
+                   'H2': 1, 'H5': 7, 'H9': 8,
+                   'I1': 5, 'I2': 3, 'I3': 9, 'I4': 2, 'I5': 1, 'I6': 8, 'I8': 7, 'I9': 6}
         puzzle2 = {'B2': 2}
         puzzle3 = {'C3': 3}
         puzzle4 = {'D4': 4}
@@ -187,7 +266,7 @@ class sudokuSolver():
         else:
             chosen = puzzle2
 
-        return chosen
+        return puzzle1
 
 
 class sudokuGUI(tkinter.Tk):
@@ -570,10 +649,11 @@ class sudokuGUI(tkinter.Tk):
 
 
         elif button is "hint":
-            self.hint()
+            pass
+            #self.hint()
         elif button is "solve":
-
-            self.solve()
+            pass
+            #self.solve()
         elif button is "hide":
             self.clearMessage(frame)
 
@@ -623,7 +703,8 @@ class sudokuGUI(tkinter.Tk):
                 boxValue = int(square.get())
             except:
                 boxValue = None
-            boardState[x] = boxValue
+            if boxValue is not None:
+                boardState[x] = boxValue
         return boardState
 
     def clearBoard(self):
@@ -639,7 +720,7 @@ class sudokuGUI(tkinter.Tk):
 
     def solve(self):
         boardState = self.readBoard()
-        sudokuGUI.game.solve(sudokuSolver(), boardState)
+        self.fill(sudokuGUI.game.solve(sudokuSolver(), boardState))
 
 
     def hint(self):
