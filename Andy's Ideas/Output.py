@@ -228,25 +228,32 @@ class sudokuSolver():
             rowNumb = sudokuSolver.dictrow.copy()
             boxNumb = sudokuSolver.dictbox.copy()
             for x in openSquares:
-                valueT = 1
-                while valueT <= 9 and x in openSquares:
+                valueT = random.randint(1,9)
+                while x in openSquares:
                     columnNum = columnNumb[x]
                     rowNum = rowNumb[x]
                     boxNum = boxNumb[x]
-                    if valueT in columnNum and valueT in rowNum and valueT in boxNum:
+                    if valueT in columnNum
+                        possible = False
+                        #Here is the problem.  need a way to start the loop over when there are no values 1-9 that
+                        # are common in columnNum, rowNum, and boxNum.  since there is a while loop at the top
+                        #that says while not done, the value of done needs to be set to False.  Need to change the
+                        #while loop to a do/while loop so it runs through the search once first then
+                        #tries again when it fails.
+                    elif valueT in columnNum and valueT in rowNum and valueT in boxNum:
                         systemMoves[x] = valueT
                         deletec = columnNum.index(valueT)
-                        del columnNumb[deletec]
+                        del columnNum[deletec]
                         deleter = rowNum.index(valueT)
-                        del rowNumb[deleter]
+                        del rowNum[deleter]
                         deleteb = boxNum.index(valueT)
-                        del boxNumb[deleteb]
+                        del boxNum[deleteb]
                         deletex = openSquares.index(x)
                         del openSquares[deletex]
 
-                    valueT += 1
-                else:
-                    pass
+                    # valueT  = random.randint(1,9)
+                # else:
+                #     pass
             gameState = systemMoves
 
             if openSquares is not None:
