@@ -1,23 +1,26 @@
 import csp
-import Output
+from Output import sudokuSolver, sudokuGUI
+read = sudokuGUI.readBoard(sudokuGUI(None))
 
 #Possible number outputs for a Sudoku game: 1-9
 sudo = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 #Making sure that our individual boxes can only register the defined numbers
-domains = {
-     'A1':sudo, 'A2': sudo, 'A3': sudo, 'A4': sudo, 'A5': sudo, 'A6': sudo, 'A7': sudo, 'A8': sudo, 'A9': sudo,
-     'B1':sudo, 'B2': sudo, 'B3': sudo, 'B4': sudo, 'B5': sudo, 'B6': sudo, 'B7': sudo, 'B8': sudo, 'B9': sudo,
-     'C1':sudo, 'C2': sudo, 'C3': sudo, 'C4': sudo, 'C5': sudo, 'C6': sudo, 'C7': sudo, 'C8': sudo, 'C9': sudo,
-     'D1':sudo, 'D2': sudo, 'D3': sudo, 'D4': sudo, 'D5': sudo, 'D6': sudo, 'D7': sudo, 'D8': sudo, 'D9': sudo,
-     'E1':sudo, 'E2': sudo, 'E3': sudo, 'E4': sudo, 'E5': sudo, 'E6': sudo, 'E7': sudo, 'E8': sudo, 'E9': sudo,
-     'F1':sudo, 'F2': sudo, 'F3': sudo, 'F4': sudo, 'F5': sudo, 'F6': sudo, 'F7': sudo, 'F8': sudo, 'F9': sudo,
-     'G1':sudo, 'G2': sudo, 'G3': sudo, 'G4': sudo, 'G5': sudo, 'G6': sudo, 'G7': sudo, 'G8': sudo, 'G9': sudo,
-     'H1':sudo, 'H2': sudo, 'H3': sudo, 'H4': sudo, 'H5': sudo, 'H6': sudo, 'H7': sudo, 'H8': sudo, 'H9': sudo,
-     'I1':sudo, 'I2': sudo, 'I3': sudo, 'I4': sudo, 'I5': sudo, 'I6': sudo, 'I7': sudo, 'I8': sudo, 'I9': sudo,
-}
+domains = sudokuSolver.solve(sudokuSolver(), read)
+# domains = sudokuSolver.solve(sudokuSolver(), state)
+# {
+#      'A1':sudo, 'A2': sudo, 'A3': sudo, 'A4': sudo, 'A5': sudo, 'A6': sudo, 'A7': sudo, 'A8': sudo, 'A9': sudo,
+#      'B1':sudo, 'B2': sudo, 'B3': sudo, 'B4': sudo, 'B5': sudo, 'B6': sudo, 'B7': sudo, 'B8': sudo, 'B9': sudo,
+#      'C1':sudo, 'C2': sudo, 'C3': sudo, 'C4': sudo, 'C5': sudo, 'C6': sudo, 'C7': sudo, 'C8': sudo, 'C9': sudo,
+#      'D1':sudo, 'D2': sudo, 'D3': sudo, 'D4': sudo, 'D5': sudo, 'D6': sudo, 'D7': sudo, 'D8': sudo, 'D9': sudo,
+#      'E1':sudo, 'E2': sudo, 'E3': sudo, 'E4': sudo, 'E5': sudo, 'E6': sudo, 'E7': sudo, 'E8': sudo, 'E9': sudo,
+#      'F1':sudo, 'F2': sudo, 'F3': sudo, 'F4': sudo, 'F5': sudo, 'F6': sudo, 'F7': sudo, 'F8': sudo, 'F9': sudo,
+#      'G1':sudo, 'G2': sudo, 'G3': sudo, 'G4': sudo, 'G5': sudo, 'G6': sudo, 'G7': sudo, 'G8': sudo, 'G9': sudo,
+#      'H1':sudo, 'H2': sudo, 'H3': sudo, 'H4': sudo, 'H5': sudo, 'H6': sudo, 'H7': sudo, 'H8': sudo, 'H9': sudo,
+#      'I1':sudo, 'I2': sudo, 'I3': sudo, 'I4': sudo, 'I5': sudo, 'I6': sudo, 'I7': sudo, 'I8': sudo, 'I9': sudo,
+# }
 
-variables =
+variables = domains.keys()
 
 
 
@@ -194,9 +197,9 @@ neighbors = {
     'I9': ['I1', 'I2', 'I3', 'I4', 'I5', 'I6', 'I7', 'I8', 'A9', 'C9', 'D9', 'E9', 'F9', 'G9', 'H9', 'B9', 'G7',
            'G8', 'H7', 'H8'],
 }
-def eliminateVariables(variablesTD):
-    for x in variablesTD:
-        domains.pop(x)
+# def eliminateVariables(variablesTD):
+#     for x in variablesTD:
+#         domains.pop(x)
 
 
 

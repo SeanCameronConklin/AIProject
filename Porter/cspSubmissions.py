@@ -5,21 +5,22 @@ from csp import backtracking_search, lcv, mrv, mac
 import myCSPs
 # import tkinter
 # from Porter.Output import sudokuGUI
-# gui = sudokuGUI.initialize(sudokuGUI(tkinter.TK))
-states = {'A1': 3, 'A3': 1, 'A4': 5, 'A5': 2, 'A6': 9,
-                   'B1': 9, 'B3': 4, 'B7': 3, 'B8': 5,
-                   'C5': 3, 'C8': 8,
-                   'D1': 1, 'D2': 2, 'D3': 5, 'D4': 3, 'D5': 8,
-                   'E4': 1, 'E5': 4, 'E7': 7, 'E9': 3,
-                   'F1': 7, 'F9': 5,
-                   'G1': 8, 'G6': 3, 'G8': 9,
-                   'H2': 1, 'H5': 7, 'H9': 8,
-                   'I1': 5, 'I2': 3, 'I3': 9, 'I4': 2, 'I5': 1, 'I6': 8, 'I8': 7, 'I9': 6}
+# gui = sudokuGUI.initialize(sudokuGUI(tkinter))
+# states = {}
+    # 'A1': 3, 'A3': 1, 'A4': 5, 'A5': 2, 'A6': 9,
+#                    'B1': 9, 'B3': 4, 'B7': 3, 'B8': 5,
+#                    'C5': 3, 'C8': 8,
+#                    'D1': 1, 'D2': 2, 'D3': 5, 'D4': 3, 'D5': 8,
+#                    'E4': 1, 'E5': 4, 'E7': 7, 'E9': 3,
+#                    'F1': 7, 'F9': 5,
+#                    'G1': 8, 'G6': 3, 'G8': 9,
+#                    'H2': 1, 'H5': 7, 'H9': 8,
+#                    'I1': 5, 'I2': 3, 'I3': 9, 'I4': 2, 'I5': 1, 'I6': 8, 'I8': 7, 'I9': 6}
 
-def try_csps(csps,state):
+def try_csps(csps):
 
     for c in csps:
-        myCSPs.eliminateVariables(state)
+        # myCSPs.eliminateVariables(state)
         assignment = backtracking_search(
             **c,
 
@@ -28,7 +29,9 @@ def try_csps(csps,state):
             inference=mac
         )
         # print(assignment)
-        print( assignment)
+        final = assignment
+        return final
+
 
 submissions = {}
 scores = {}
@@ -55,7 +58,7 @@ for student in roster:
     try:
         csps = submissions[student]
         print('CSPs from:', student)
-        try_csps(csps,states)
+        try_csps(csps)
     except:
         traceback.print_exc()
 
