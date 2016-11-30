@@ -1,7 +1,7 @@
 import importlib
 import traceback
 from games import alphabeta_search
-from utils import roster, print_table
+from util import roster, print_table
 from io import StringIO
 import sys
 
@@ -163,7 +163,8 @@ message1 = 'Submissions that compile:'
 for student in roster:
     try:
         # http://stackoverflow.com/a/17136796/2619926
-        mod = importlib.import_module('submissions.' + student + '.mygames')
+        # mod = importlib.import_module('submissions.' + student + '.mygames')
+        mod = importlib.import_module( student + '.mygames')
         submissions[student] = mod.myGames
         message1 += ' ' + student
     except ImportError:
