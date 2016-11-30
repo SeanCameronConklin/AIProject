@@ -350,7 +350,7 @@ class sudokuSolver():
         else:
             chosen = puzzle1
 
-        return puzzle1
+        return chosen
 
 
 class sudokuGUI(tkinter.Tk):
