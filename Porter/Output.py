@@ -183,37 +183,81 @@ class sudokuSolver():
                                     'A8', 'B8', 'C8', 'D8', 'E8', 'F8', 'G8', 'H8', 'I8',
                                     'A9', 'B9', 'C9', 'D9', 'E9', 'F9', 'G9', 'H9', 'I9', ]
 
-    # def solve(self, boardState):
-    #
-    #     # read current board state and delete values from valid moves pool
-    #     gameState = dict()
-    #     openSquares = sudokuSolver.openSquares
-    #     StateKeys = boardState.keys()
-    #     for x in StateKeys:
-    #         I = boardState[x]
-    #         R = sudokuSolver.dictrow[x]
-    #         C = sudokuSolver.dictcolumn[x]
-    #         B = sudokuSolver.dictbox[x]
-    #         if I is not None:
-    #             if I in R:
-    #                 deleteR = R.index(I)
-    #                 del R[deleteR]
-    #             if I in C:
-    #                 deleteC = C.index(I)
-    #                 del C[deleteC]
-    #             if I in B:
-    #                 deleteB = B.index(I)
-    #                 del B[deleteB]
-    #
-    #     # delete any moves the system makes from the valid moves pool
-    #     systemMoves = dict()
-    #     # while openSquares is not None:
-    #     systemMoveKeys = systemMoves.keys()
-    #     if StateKeys is not None:
-    #         for v in StateKeys:
-    #             if boardState[v] is not None:
-    #                 deleteV = openSquares.index(v)
-    #                 del openSquares[deleteV]
+    def solve(self, boardState):
+
+        sudo = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+        # Making sure that our individual boxes can only register the defined numbers
+        domains = {
+            'A1': sudo.copy(), 'A2': sudo.copy(), 'A3': sudo.copy(), 'A4': sudo.copy(), 'A5': sudo.copy(), 'A6': sudo.copy(), 'A7': sudo.copy(), 'A8': sudo.copy(), 'A9': sudo.copy(),
+            'B1': sudo.copy(), 'B2': sudo.copy(), 'B3': sudo.copy(), 'B4': sudo.copy(), 'B5': sudo.copy(), 'B6': sudo.copy(), 'B7': sudo.copy(), 'B8': sudo.copy(), 'B9': sudo.copy(),
+            'C1': sudo.copy(), 'C2': sudo.copy(), 'C3': sudo.copy(), 'C4': sudo.copy(), 'C5': sudo.copy(), 'C6': sudo.copy(), 'C7': sudo.copy(), 'C8': sudo.copy(), 'C9': sudo.copy(),
+            'D1': sudo.copy(), 'D2': sudo.copy(), 'D3': sudo.copy(), 'D4': sudo.copy(), 'D5': sudo.copy(), 'D6': sudo.copy(), 'D7': sudo.copy(), 'D8': sudo.copy(), 'D9': sudo.copy(),
+            'E1': sudo.copy(), 'E2': sudo.copy(), 'E3': sudo.copy(), 'E4': sudo.copy(), 'E5': sudo.copy(), 'E6': sudo.copy(), 'E7': sudo.copy(), 'E8': sudo.copy(), 'E9': sudo.copy(),
+            'F1': sudo.copy(), 'F2': sudo.copy(), 'F3': sudo.copy(), 'F4': sudo.copy(), 'F5': sudo.copy(), 'F6': sudo.copy(), 'F7': sudo.copy(), 'F8': sudo.copy(), 'F9': sudo.copy(),
+            'G1': sudo.copy(), 'G2': sudo.copy(), 'G3': sudo.copy(), 'G4': sudo.copy(), 'G5': sudo.copy(), 'G6': sudo.copy(), 'G7': sudo.copy(), 'G8': sudo.copy(), 'G9': sudo.copy(),
+            'H1': sudo.copy(), 'H2': sudo.copy(), 'H3': sudo.copy(), 'H4': sudo.copy(), 'H5': sudo.copy(), 'H6': sudo.copy(), 'H7': sudo.copy(), 'H8': sudo.copy(), 'H9': sudo.copy(),
+            'I1': sudo.copy(), 'I2': sudo.copy(), 'I3': sudo.copy(), 'I4': sudo.copy(), 'I5': sudo.copy(), 'I6': sudo.copy(), 'I7': sudo.copy(), 'I8': sudo.copy(), 'I9': sudo.copy(),
+        }
+
+        # read current board state and delete values from valid moves pool
+        gameState = dict()
+        openSquares = sudokuSolver.openSquares
+        StateKeys = boardState.keys()
+        for x in StateKeys:
+            I = boardState[x]
+            R = sudokuSolver.dictrow[x]
+            C = sudokuSolver.dictcolumn[x]
+            B = sudokuSolver.dictbox[x]
+            if I is not None:
+                if I in R:
+                    deleteR = R.index(I)
+                    del R[deleteR]
+                if I in C:
+                    deleteC = C.index(I)
+                    del C[deleteC]
+                if I in B:
+                    deleteB = B.index(I)
+                    del B[deleteB]
+        domainKeys = domains.keys()
+        for x in domainKeys:
+            i = domains[x]
+            r = sudokuSolver.dictrow[x]
+            c = sudokuSolver.dictcolumn[x]
+            b = sudokuSolver.dictbox[x]
+            for y in i:
+                delete = i.index(y)
+                if y in r and y in c and y in b:
+                    pass
+                else:
+                    del i[delete]
+        newDomains = dict()
+        IDomains = dict()
+        if len(StateKeys) is not 0:
+            for q in StateKeys:
+                for w in domainKeys:
+                    if q is not w:
+                        IDomains[w] = domains[w]
+
+        else:
+            IDomains = domains
+
+        newDomains = {**IDomains, **boardState}
+
+        return newDomains
+
+
+
+
+        # # delete any moves the system makes from the valid moves pool
+        # systemMoves = dict()
+        # # while openSquares is not None:
+        # systemMoveKeys = systemMoves.keys()
+        # if StateKeys is not None:
+        #     for v in StateKeys:
+        #         if boardState[v] is not None:
+        #             deleteV = openSquares.index(v)
+        #             del openSquares[deleteV]
     #     elif systemMoves is not None:
     #         for y in systemMoveKeys:
     #             deleteY = openSquares.index(y)
@@ -279,19 +323,20 @@ class sudokuSolver():
 
     def randPuzzles(self):
         puzzleNumber = random.randint(1, 5)
-        puzzle1 = {'A1': 3, 'A3': 1, 'A4': 5, 'A5': 2, 'A6': 9,
-                   'B1': 9, 'B3': 4, 'B7': 3, 'B8': 5,
-                   'C5': 3, 'C8': 8,
-                   'D1': 1, 'D2': 2, 'D3': 5, 'D4': 3, 'D5': 8,
-                   'E4': 1, 'E5': 4, 'E7': 7, 'E9': 3,
-                   'F1': 7, 'F9': 5,
-                   'G1': 8, 'G6': 3, 'G8': 9,
-                   'H2': 1, 'H5': 7, 'H9': 8,
-                   'I1': 5, 'I2': 3, 'I3': 9, 'I4': 2, 'I5': 1, 'I6': 8, 'I8': 7, 'I9': 6}
-        puzzle2 = {'B2': 2}
-        puzzle3 = {'C3': 3}
-        puzzle4 = {'D4': 4}
-        puzzle5 = {'E5': 5}
+        puzzle1 = {'A1': [3], 'A3': [1], 'A4': [5], 'A5': [2], 'A6': [9],
+                   'B1': [9], 'B3': [4], 'B7': [3], 'B8': [5],
+                   'C5': [3], 'C8': [8],
+                   'D1': [1], 'D2': [2], 'D3': [5], 'D4': [3], 'D5': [8],
+                   'E4': [1], 'E5': [4], 'E7': [7], 'E9': [3],
+                   'F1': [7], 'F9': [5],
+                   'G1': [8], 'G6': [3], 'G8': [9],
+                   'H2': [1], 'H5': [7], 'H9': [8],
+                   'I1': [5], 'I2': [3], 'I3': [9], 'I4': [2], 'I5': [1], 'I6': [8], 'I8': [7], 'I9': [6]}
+        puzzle2 = {'B2': [2]}
+        puzzle3 = {'C3': [3]}
+        puzzle4 = {'D4': [4]}
+        puzzle5 = {'E5': [5]}
+        puzzle6 = dict()
         if puzzleNumber == 1:
             chosen = puzzle1
         elif puzzleNumber == 2:
@@ -303,7 +348,7 @@ class sudokuSolver():
         elif puzzleNumber == 5:
             chosen = puzzle5
         else:
-            chosen = puzzle2
+            chosen = puzzle1
 
         return puzzle1
 
@@ -733,7 +778,7 @@ class sudokuGUI(tkinter.Tk):
     def solve(self):
         boardState = self.readBoard()
         csp = myCSPs.myCSPs
-        answer = cspSubmissions.try_csps(csp, boardState)
+        answer = cspSubmissions.try_csps(csp)
         # myCSPs.eliminateVariables(boardState)
         # self.fill(sudokuGUI.game.solve(sudokuSolver(), boardState))
         self.fill(answer)
