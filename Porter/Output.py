@@ -204,21 +204,21 @@ class sudokuSolver():
         gameState = dict()
         openSquares = sudokuSolver.openSquares
         StateKeys = boardState.keys()
-        for x in StateKeys:
-            I = boardState[x]
-            R = sudokuSolver.dictrow[x]
-            C = sudokuSolver.dictcolumn[x]
-            B = sudokuSolver.dictbox[x]
-            if I is not None:
-                if I in R:
-                    deleteR = R.index(I)
-                    del R[deleteR]
-                if I in C:
-                    deleteC = C.index(I)
-                    del C[deleteC]
-                if I in B:
-                    deleteB = B.index(I)
-                    del B[deleteB]
+        # for x in StateKeys:
+        #     I = boardState[x]
+        #     R = sudokuSolver.dictrow[x]
+        #     C = sudokuSolver.dictcolumn[x]
+        #     B = sudokuSolver.dictbox[x]
+        #     if I is not None:
+        #         if I in R:
+        #             deleteR = R.index(I)
+        #             del R[deleteR]
+        #         if I in C:
+        #             deleteC = C.index(I)
+        #             del C[deleteC]
+        #         if I in B:
+        #             deleteB = B.index(I)
+        #             del B[deleteB]
         domainKeys = domains.keys()
         for x in domainKeys:
             i = domains[x]
@@ -322,21 +322,105 @@ class sudokuSolver():
         return sudokuSolver.puzzleState
 
     def randPuzzles(self):
-        puzzleNumber = random.randint(1, 5)
-        puzzle1 = {'A1': [3], 'A3': [1], 'A4': [5], 'A5': [2], 'A6': [9],
-                   'B1': [9], 'B3': [4], 'B7': [3], 'B8': [5],
-                   'C5': [3], 'C8': [8],
-                   'D1': [1], 'D2': [2], 'D3': [5], 'D4': [3], 'D5': [8],
-                   'E4': [1], 'E5': [4], 'E7': [7], 'E9': [3],
-                   'F1': [7], 'F9': [5],
-                   'G1': [8], 'G6': [3], 'G8': [9],
-                   'H2': [1], 'H5': [7], 'H9': [8],
-                   'I1': [5], 'I2': [3], 'I3': [9], 'I4': [2], 'I5': [1], 'I6': [8], 'I8': [7], 'I9': [6]}
-        puzzle2 = {'B2': [2]}
-        puzzle3 = {'C3': [3]}
-        puzzle4 = {'D4': [4]}
-        puzzle5 = {'E5': [5]}
-        puzzle6 = dict()
+        puzzleNumber = random.randint(1, 11)
+        puzzle1 = {'A1': 3, 'A3': 1, 'A4': 5, 'A5': 2, 'A6': 9,
+                   'B1': 9, 'B3': 4, 'B7': 3, 'B8': 5,
+                   'C5': 3, 'C8': 8,
+                   'D1': 1, 'D2': 2, 'D3': 5, 'D4': 3, 'D5': 8,
+                   'E4': 1, 'E5': 4, 'E7': 7, 'E9': 3,
+                   'F1': 7, 'F9': 5,
+                   'G1': 8, 'G6': 3, 'G8': 9,
+                   'H2': 1, 'H5': 7, 'H9': 8,
+                   'I1': 5, 'I2': 3, 'I3': 9, 'I4': 2, 'I5': 1, 'I6': 8, 'I8': 7, 'I9': 6}
+        puzzle2 = {'A2': 2, 'A4': 4, 'A5': 5, 'A6': 6, 'A7': 7, 'A8': 8, 'A9': 9,
+                   'B1': 4, 'B2': 5, 'B3': 7, 'B5': 8, 'B7': 2, 'B8': 3, 'B9': 6,
+                   'C1': 6, 'C2': 8, 'C3': 9, 'C4': 2, 'C5': 3, 'C6': 7, 'C8': 4,
+                   'D3': 5, 'D4': 3, 'D5': 6, 'D6': 2, 'D7': 9, 'D8': 7, 'D9': 4,
+                   'E1': 2, 'E2': 7, 'E3': 4, 'E5': 9, 'E7': 6, 'E8': 5, 'E9': 3,
+                   'F1': 3, 'F2': 9, 'F3': 6, 'F4': 5, 'F5': 7, 'F6': 4, 'F7': 8,
+                   'G2': 4, 'G4': 6, 'G5': 1, 'G6': 8, 'G7': 3, 'G8': 9, 'G9': 7,
+                   'H1': 7, 'H2': 6, 'H3': 1, 'H5': 4, 'H7': 5, 'H8': 2, 'H9': 8,
+                   'I1': 9, 'I2': 3, 'I3': 8, 'I4': 7, 'I5': 2, 'I6': 5, 'I8': 6,}
+        puzzle3 = {'A1': 6, 'A5': 2, 'A9': 9,
+                   'B2': 1, 'B4': 3, 'B6': 7, 'B8': 5,
+                   'C3': 3, 'C7': 1,
+                   'D2': 9, 'D8': 2,
+                   'E1': 2, 'E4': 8, 'E5': 7, 'E6': 5, 'E9': 3,
+                   'F3': 5, 'F5': 1, 'F7': 4,
+                   'G2': 7, 'G5': 8, 'G8': 9,
+                   'H3': 1, 'H5': 4, 'H7': 8,
+                   'I4': 2, 'I5': 5, 'I6': 9}
+        puzzle4 = {'A6': 4, 'A8': 5,
+                   'B2': 9, 'B9': 2,
+                   'C1': 5, 'C9': 1,
+                   'D2': 8, 'D3': 9, 'D5': 4, 'D6': 5, 'D7': 3,
+                   'E3': 3, 'E7': 8,
+                   'F3': 5, 'F5': 7, 'F6': 8,
+                   'G4': 2,
+                   'H3': 7, 'H4': 1, 'H7': 4, 'H9': 6,
+                   'I1': 1, 'I5': 3, 'I8': 7}
+        puzzle5 = {
+                   'B6': 3, 'B8': 8, 'B9': 5,
+                   'C3': 1, 'C5': 2,
+                   'D4': 5, 'D6': 7,
+                   'E3': 4, 'E7': 2,
+                   'F2': 9,
+                   'G1': 5, 'G8': 7, 'G9': 3,
+                   'H3': 2, 'H5': 1,
+                   'I5': 4, 'I9': 9}
+        puzzle6 = {'A2': 8, 'A5': 7, 'A8': 9,
+                   'B1': 9, 'B9': 7,
+                   'C3': 2, 'C7': 6,
+                   'D2': 3, 'D4': 6, 'D6': 4, 'D8': 8,
+                   'F2': 7, 'F4': 2, 'F6': 8, 'F8': 5,
+                   'G3': 4, 'G7': 8,
+                   'H1': 5, 'H9': 2,
+                   'I2': 1, 'I5': 9, 'I8': 3}
+        puzzle7 = {'A1': 6, 'A5': 3, 'A8': 5,
+                   'B2': 9, 'B4': 4, 'B7': 2,
+                   'C2': 2, 'C3': 3, 'C5': 7, 'C6': 8, 'C9': 6,
+                   'D1': 4, 'D6': 5, 'D7': 1, 'D8': 7, 'D9': 9,
+                   'E1': 7, 'E3': 6, 'E9': 4,
+                   'F4': 3,
+                   'G2': 8, 'G3': 2,
+                   'H2': 7, 'H6': 2, 'H7': 5,
+                   'I2': 6, 'I3': 1, 'I5': 8, 'I7': 4}
+        puzzle8 = {'A1': 8, 'A7': 1, 'A8': 4, 'A9': 7,
+                   'B3': 4, 'B5': 9, 'B9': 6,
+                   'C2': 2, 'C3': 3, 'C4': 7, 'C7': 8,
+                   'D3': 9, 'D6': 1, 'D9': 2,
+                   'E4': 3, 'E5': 2,
+                   'F2': 8, 'F6': 9, 'F7': 4,
+                   'G3': 1,
+                   'H1': 9, 'H3': 6, 'H4': 1, 'H5': 4, 'H8': 3, 'H9': 8,
+                   'I1': 5, 'I5': 6, 'I6': 3}
+        puzzle9 = {'A1': 5, 'A3': 1, 'A7': 6, 'A9': 4,
+                   'B2': 9, 'B4': 3, 'B6': 6, 'B8': 5,
+                   'C5': 9,
+                   'D1': 4, 'D9': 9,
+                   'E4': 1, 'E6': 9,
+                   'F1': 7, 'F9': 6,
+                   'G5': 2,
+                   'H2': 8, 'H4': 5, 'H6': 7, 'H8': 6,
+                   'I1': 1, 'I3': 3, 'I7': 7, 'I9': 2}
+        puzzle10 = {'A2': 1, 'A4': 2, 'A8': 5, 'A9': 7,
+                    'B3': 8,
+                    'C5': 6, 'C7': 2,
+                    'D1': 3, 'D2': 9,
+                    'E4': 4, 'E6': 7,
+                    'F1': 5, 'F4': 6, 'F6': 9, 'F9': 1,
+                    'G2': 6, 'G3': 9, 'G5': 8, 'G9': 2,
+                    'H4': 1, 'H5': 5, 'H7': 7, 'H8': 6,
+                    'I7': 8}
+        puzzle11 = {'A1': 8, 'A4': 4, 'A6': 6, 'A9': 7,
+                    'B7': 4,
+                    'C2': 1, 'C7': 6, 'C8': 5,
+                    'D1': 5, 'D3': 9, 'D5': 3, 'D7': 7, 'D8': 8,
+                    'E5': 7,
+                    'F2': 4, 'F3': 8, 'F5': 2, 'F7': 1, 'F8': 3,
+                    'G2': 5, 'G3': 2, 'G8': 9,
+                    'H3': 1,
+                    'I1': 3, 'I4': 9, 'I6': 2, 'I9': 5}
         if puzzleNumber == 1:
             chosen = puzzle1
         elif puzzleNumber == 2:
@@ -347,11 +431,22 @@ class sudokuSolver():
             chosen = puzzle4
         elif puzzleNumber == 5:
             chosen = puzzle5
+        elif puzzleNumber == 6:
+            chosen = puzzle6;
+        elif puzzleNumber == 7:
+            chosen = puzzle7
+        elif puzzleNumber == 8:
+            chosen = puzzle8
+        elif puzzleNumber == 9:
+            chosen = puzzle9
+        elif puzzleNumber == 10:
+            chosen = puzzle10
+        elif puzzleNumber == 11:
+            chosen = puzzle11
         else:
             chosen = puzzle1
 
         return chosen
-
 
 class sudokuGUI(tkinter.Tk):
     rulesPressed = False
