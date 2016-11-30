@@ -762,7 +762,7 @@ class sudokuGUI(tkinter.Tk):
         for x in squareKeys:
             square = boxes[x]
             try:
-                boxValue = int(square.get())
+                boxValue = [int(square.get())]
             except:
                 boxValue = None
             if boxValue is not None:

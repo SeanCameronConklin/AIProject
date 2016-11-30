@@ -5,8 +5,8 @@ from csp import backtracking_search, lcv, mrv, mac
 import myCSPs
 # import tkinter
 # from Porter.Output import sudokuGUI
-# gui = sudokuGUI.initialize(sudokuGUI(tkinter.TK))
-states = {}
+# gui = sudokuGUI.initialize(sudokuGUI(tkinter))
+# states = {}
     # 'A1': 3, 'A3': 1, 'A4': 5, 'A5': 2, 'A6': 9,
 #                    'B1': 9, 'B3': 4, 'B7': 3, 'B8': 5,
 #                    'C5': 3, 'C8': 8,
@@ -29,7 +29,9 @@ def try_csps(csps):
             inference=mac
         )
         # print(assignment)
-        print( assignment)
+        final = assignment
+        return final
+
 
 submissions = {}
 scores = {}

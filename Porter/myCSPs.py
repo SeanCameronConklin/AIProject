@@ -1,11 +1,12 @@
 import csp
 from Output import sudokuSolver, sudokuGUI
+read = sudokuGUI.readBoard(sudokuGUI(None))
 
 #Possible number outputs for a Sudoku game: 1-9
 sudo = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 #Making sure that our individual boxes can only register the defined numbers
-domains = sudokuSolver.solve(sudokuSolver(), sudokuSolver.randPuzzles(sudokuSolver()))
+domains = sudokuSolver.solve(sudokuSolver(), read)
 # domains = sudokuSolver.solve(sudokuSolver(), state)
 # {
 #      'A1':sudo, 'A2': sudo, 'A3': sudo, 'A4': sudo, 'A5': sudo, 'A6': sudo, 'A7': sudo, 'A8': sudo, 'A9': sudo,
